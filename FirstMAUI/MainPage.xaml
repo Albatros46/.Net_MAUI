@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FirstMAUI.MainPage">
+    <!--Layouts cesitleri -> https://learn.microsoft.com/en-us/dotnet/maui/user-interface/layouts/?view=net-maui-7.0-->
+    <Grid RowDefinitions="140, Auto,*" 
+          ColumnDefinitions=".80*,.20*" 
+          Padding="12">
+        <!--ilk kolunun %80 ikinci kolonun %20 lik olacak sekilde-->
+        <Image Grid.ColumnSpan="2" 
+               Source="profil.jpg" 
+               BackgroundColor="Orange"/> <!--FirstMAUI.csproj icinde resim klasoru belirtilmistir.-->
+        <Entry Placeholder="Voranme und Nachname" Grid.Row="1"/> <!--Textbox gerovi yerine-->
+        <Button Text="Ekle" Grid.Row="1" Grid.Column="1"/>
+        <CollectionView Grid.Row="2" Grid.ColumnSpan="2">
+            <!--Liste bazli data gostermek icin yaygin obje-->
+            <CollectionView.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Servet Akcadag</x:String>
+                    <x:String>Akif Akcadag</x:String>
+                    <x:String>Salih Gultekin</x:String>
+                    <x:String>Mesut Coban</x:String>
+                </x:Array>
+            </CollectionView.ItemsSource>
+            <CollectionView.ItemTemplate> <!--Girilen verinin nasil gosterilecegini belirlemek icin-->
+                <DataTemplate>
+                    <Grid Padding="0,4">
+                        <Frame>
+                            <Label Text="{Binding}" FontSize="Medium"/>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+       
+    </Grid>
+    <!--<ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Image
+                Source="dotnet_bot.png"
+                SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                HeightRequest="200"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="Hello, Servet!"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="32"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="Welcome to .NET Multi-platform App UI"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
+                FontSize="18"
+                HorizontalOptions="Center" />
+
+            <Button
+                x:Name="CounterBtn"
+                Text="Click me"
+                SemanticProperties.Hint="Counts the number of times you click"
+                Clicked="OnCounterClicked"
+                HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
+    </ScrollView>-->
+
+</ContentPage>
